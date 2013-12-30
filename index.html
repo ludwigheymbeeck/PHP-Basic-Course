@@ -174,6 +174,146 @@ echo $myUndefined; // variable is set to null
 </div>
 
 <div class="slide">
+    <h1>Operators</h2>
+<xmp class="prettyprint">
+Arithmetic operators
+$x = 4 + 2; // 6 // addition
+$x = 4 - 2; // 2 // subtraction
+$x = 4 * 2; // 8 // multiplication
+$x = 4 / 2; // 2 // division
+$x = 4 % 2; // 0 // modulus (division remainder) 
+
+Assignment operators
+De assignment operator (=).
+
+Combined assignment operators
+$x = 0;
+$x += 5; // $x = $x+5;
+$x -= 5; // $x = $x-5;
+$x *= 5; // $x = $x*5;
+$x /= 5; // $x = $x/5;
+$x %= 5; // $x = $x%5;
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Operators (vervolg)</h2>
+<xmp class="prettyprint">
+Increment and decrement operators
+$x++; // $x += 1;
+$x−−; // $x -= 1;
+ 
+$x++; // post-increment
+$x−−; // post-decrement
+++$x; // pre-increment
+−−$x; // pre-decrement
+ 
+$x = 5; $y = $x++; // $x=6, $y=5
+$x = 5; $y = ++$x; // $x=6, $y=6
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Operators (vervolg)</h2>
+<xmp class="prettyprint">
+Comparison operators
+$x = (2 == 3); // false // equal to
+$x = (2 != 3); // true // not equal to
+$x = (2 <> 3); // true // not equal to (alternative)
+$x = (2 === 3); // false // identical
+$x = (2 !== 3); // true // not identical
+$x = (2 > 3); // false // greater than
+$x = (2 < 3); // true // less than
+$x = (2 >= 3); // false // greater than or equal to
+$x = (2 <= 3); // true // less than or equal to
+
+$x = (1 == "1"); // true (same value)
+$x = (1 === "1"); // false (different types)
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Operators (vervolg)</h2>
+<xmp class="prettyprint">
+Logical operators
+$x = (true && false); // false // logical and
+$x = (true || false); // true // logical or
+$x = !(true); // false // logical not
+
+Bitwise operators
+$x = 5 & 4; // 101 & 100 = 100 (4) // and
+$x = 5 | 4; // 101 | 100 = 101 (5) // or
+$x = 5 ^ 4; // 101 ^ 100 = 001 (1) // xor (exclusive or)
+$x = 4 << 1; // 100 << 1 =1000 (8) // left shift
+$x = 4 >> 1; // 100 >> 1 = 10 (2) // right shift
+$x = ~4; // ~00000100 = 11111011 (-5) // invert
+ 
+$x=5; $x &= 4; // 101 & 100 = 100 (4) // and
+$x=5; $x |= 4; // 101 | 100 = 101 (5) // or
+$x=5; $x ^= 4; // 101 ^ 100 = 001 (1) // xor
+$x=5; $x <<= 1; // 101 << 1 =1010 (10)// left shift
+$x=5; $x >>= 1; // 101 >> 1 = 10 (2) // right shift 
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Operators (vervolg)</h2>
+<xmp class="prettyprint">
+Expressions are normally evaluated from left to right.
+
+Precedence of Operator
+++ −−; ~ − (unary); !; */%; + − (binary); << >>; < <= > >= <>; 
+== != === !==; &; ^; |; &&; ||; = op=; and; xor; or
+
+$x = 2+3 > 1*4 && 5/5 == 1; // true
+$x = ((2+3) > (1*4)) && ((5/5) == 1); // true 
+
+Additional logical operators
+// Same as: $a = (true && false);
+$a = true && false; // $a is false
+ 
+// Same as: ($a = true) and false;
+$a = true and false; // $a is true
+$a = (true xor true); // false
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>String</h2>
+<xmp class="prettyprint">
+e.g.: $a = 'Hello';
+
+String concatenation
+$b = $a . ' World'; // Hello World
+$a .= ' World'; // Hello World 
+
+Delimiting strings
+$c = 'World';
+echo "Hello $c"; // "Hello World"
+echo 'Hello $c'; // "Hello $c"
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>String (vervolg)</h2>
+<xmp class="prettyprint">
+Comparison operators
+$x = (2 == 3); // false // equal to
+$x = (2 != 3); // true // not equal to
+$x = (2 <> 3); // true // not equal to (alternative)
+$x = (2 === 3); // false // identical
+$x = (2 !== 3); // true // not identical
+$x = (2 > 3); // false // greater than
+$x = (2 < 3); // true // less than
+$x = (2 >= 3); // false // greater than or equal to
+$x = (2 <= 3); // true // less than or equal to
+
+$x = (1 == "1"); // true (same value)
+$x = (1 === "1"); // false (different types)
+</xmp>
+</div>
+
+<div class="slide">
     <h1>REMOTE: PhoneGap Build en GitHub</h1>
     <ul class="paddingleft">
 		<li>Installatie van git</li>
