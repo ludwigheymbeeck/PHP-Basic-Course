@@ -142,7 +142,7 @@ comment */
 
 
 <div class="slide">
-    <h1>Variables: data types</h2>
+    <h1>Variables: data types</h1>
 <xmp class="prettyprint">
 Integer type
 $myInt = 1234; // decimal number
@@ -174,7 +174,7 @@ echo $myUndefined; // variable is set to null
 </div>
 
 <div class="slide">
-    <h1>Operators</h2>
+    <h1>Operators</h1>
 <xmp class="prettyprint">
 Arithmetic operators
 $x = 4 + 2; // 6 // addition
@@ -197,7 +197,7 @@ $x %= 5; // $x = $x%5;
 </div>
 
 <div class="slide">
-    <h1>Operators (vervolg)</h2>
+    <h1>Operators (vervolg)</h1>
 <xmp class="prettyprint">
 Increment and decrement operators
 $x++; // $x += 1;
@@ -214,7 +214,7 @@ $x = 5; $y = ++$x; // $x=6, $y=6
 </div>
 
 <div class="slide">
-    <h1>Operators (vervolg)</h2>
+    <h1>Operators (vervolg)</h1>
 <xmp class="prettyprint">
 Comparison operators
 $x = (2 == 3); // false // equal to
@@ -233,7 +233,7 @@ $x = (1 === "1"); // false (different types)
 </div>
 
 <div class="slide">
-    <h1>Operators (vervolg)</h2>
+    <h1>Operators (vervolg)</h1>
 <xmp class="prettyprint small">
 Logical operators
 $x = (true && false); // false // logical and
@@ -257,7 +257,7 @@ $x=5; $x >>= 1; // 101 >> 1 = 10 (2) // right shift
 </div>
 
 <div class="slide">
-    <h1>Operators (vervolg)</h2>
+    <h1>Operators (vervolg)</h1>
 <xmp class="prettyprint small">
 Expressions are normally evaluated from left to right.
 
@@ -279,7 +279,7 @@ $a = (true xor true); // false
 </div>
 
 <div class="slide">
-    <h1>String</h2>
+    <h1>String</h1>
 <xmp class="prettyprint">
 e.g.: $a = 'Hello';
 
@@ -295,7 +295,7 @@ echo 'Hello $c'; // "Hello $c"
 </div>
 
 <div class="slide">
-    <h1>String (vervolg)</h2>
+    <h1>String (vervolg)</h1>
 <xmp class="prettyprint">
 Comparison operators
 $x = (2 == 3); // false // equal to
@@ -311,6 +311,50 @@ $x = (2 <= 3); // true // less than or equal to
 $x = (1 == "1"); // true (same value)
 $x = (1 === "1"); // false (different types)
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>String (vervolg)</h1>
+<xmp class="prettyprint">
+Escape characters
+Gebruik escape characters voor speciale characters
+\n newline             \f form feed
+\t horizontal tab      \$ dollar sign
+\v vertical tab        \' single quote
+\e escape              \" double quote
+\r carriage return     \\ backslash
+
+e.g.:
+$s = "Hello\nWorld";
+\n is verschillend van de <br> HTML tag 
+echo "Hello<br>World"; // line break on web page
+
+$s = 'It\'s'; // "It's"
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>String (vervolg)</h1>
+<xmp class="prettyprint">
+Character reference
+$s = 'Hello';
+$s[0] = 'J';
+echo $s; // "Jello"
+$s[strlen($s)-1] = 'y';
+echo $s; // "Jelly"
+
+String compare
+Vergelijk strings met de = operator. 
+Dit zal niet het geheugenadres vergelijken 
+zoals in sommige andere computertalen.
+$a = 'test';
+$b = 'test';
+$c = ($a == $b); // true
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Arrays</h1>
 </div>
 
 <div class="slide">
