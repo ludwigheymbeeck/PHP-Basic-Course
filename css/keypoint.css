@@ -272,6 +272,10 @@ img.full {
 	font-size: 0.8em;
 }
 
+.evensmaller {
+	font-size: 0.6em;
+}
+
 .scroller > ol {
     list-style-position: inside;
 }
