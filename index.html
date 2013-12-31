@@ -401,8 +401,8 @@ $e = array(5 => 5, 6); // $e[6] = 6
 <xmp class="prettyprint small">
 Mixed arrays
 
-PHP makes no distinction between associative and numerical arrays, and so elements of
-each can be combined in the same array.
+PHP makes no distinction between associative and numerical arrays, 
+and so elements of each can be combined in the same array.
  
 $d = array(0 => 1, 'foo' => 'bar');
 echo $d[0] . $d['foo']; // "1bar"
@@ -823,6 +823,92 @@ such as string and array handling functions.
 </xmp>
 </div>
 
+<div class="slide">
+    <h1>HTML forms</h1>
+<xmp class="prettyprint xsmall">
+An HTML form has two required attributes: action and method. The action attribute
+specified the script to which the form data is passed. For example, the following form
+submits one input property called myString to the script file MyPage.php.
+</xmp>
+<xmp class="prettyprint small">
+<html>
+<body>
+<form action="MyPage.php" method="post">
+<input type="text" name="myString" />
+<input type="submit" />
+</form>
+</body>
+</html>
+</xmp>
+<xmp class="prettyprint xsmall">
+The other required attribute of the form element specifies the sending method,
+which may be either get or post.
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Sending with post
+</xmp>
+<p class="evensmaller">
+If the form is sent using the post method the data will be available 
+through the $_POST array. The names of the properties will be the keys 
+in that associative array. Data sent with the post method is 
+<strong>not visible</strong> on the URL of the page, but this also means 
+that the <strong>state of the page cannot be saved</strong> by, 
+for example, bookmarking the page.
+</p>
+<xmp class="prettyprint small">
+echo $_POST['myString'];
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Sending with get
+</xmp>
+<p class="evensmaller">
+The alternative to post is to send the form data with the get method 
+and to retrieve it using the $_GET array. The variables are then 
+<strong>displayed</strong> in the address bar, which effectively 
+maintains the state of the page if it is bookmarked and revisited.
+</p>
+<xmp class="prettyprint small">
+echo $_GET['myString'];
+</xmp>
+<p class="evensmaller">
+Because the data is contained in the address bar this means that 
+variables cannot only be passed through HTML forms but also through 
+HTML links. The $_GET array can then be used to change the state of 
+the page accordingly. This provides one way of passing variables 
+from one page to another.
+</p>
+<xmp class="prettyprint small">
+<a href="MyPage.php?myString=Foo+Bar">link</a> 
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Request array
+</xmp>
+<p class="evensmaller">
+If it does not matter whether the post or get method was used to send the data the
+$_REQUEST array can be used. This array typically contains the $_GET and $_POST
+arrays, but may also contain the $_COOKIE array.
+</p>
+<xmp class="prettyprint small">
+echo $_REQUEST['myString']; // "Foo Bar"
+</xmp>
+<p class="evensmaller">
+The content of the $_REQUEST array can be set in the PHP configuration file1 and
+varies between PHP distributions. Due to security concerns, the $_COOKIE array is usually
+not included.
+</p>
+</div>
 
 <div class="slide summary">
     <h1>Summary</h1>
