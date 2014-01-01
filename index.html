@@ -118,7 +118,7 @@
 
 <div class="slide">
     <h1>Comments</h1>
-<p class="smaller">Commentaren worden gebruikt om notities in de code te zetten.<br>Deze heeft geen effect op de uitvoering van het script.<br>PHP heeft volgende syntax voor commentaren:</p>
+<p class="paddingleft smaller">Commentaren worden gebruikt om notities in de code te zetten.<br>Deze heeft geen effect op de uitvoering van het script.<br>PHP heeft volgende syntax voor commentaren:</p>
 <xmp class="prettyprint large">
 <?php
 // single-line comment
@@ -132,12 +132,12 @@ comment */
 <div class="slide">
     <h1>Variables</h1>
 <h2>Defining variables</h2>
-<p class="evensmaller">Een variable begint met een dollar teken ($) gevolgd met de naamgeving. Bv:<br></p>
-<p><strong>$myVar;</strong></p>
-<p class="evensmaller">Een waarde kan toegewezen worden aan een variable dmv de operator (=).<br>De variable wordt dan geinitialiseerd.</p>
-<p><strong>$myVar = 10;</strong></p>
-<p class="evensmaller">Eens een variable gedefinieerd is kan men het gaan gebruiken in referenties.<br>Bv, de waarde van de variable kan worden uitgeprint met een echo commando zoals:</p>
-<p><strong>echo $myVar; // "10"</strong></p>
+<p class="paddingleft evensmaller">Een variable begint met een dollar teken ($) gevolgd met de naamgeving. Bv:<br></p>
+<p class="paddingleft"><strong>$myVar;</strong></p>
+<p class="paddingleft evensmaller">Een waarde kan toegewezen worden aan een variable dmv de operator (=).<br>De variable wordt dan geinitialiseerd.</p>
+<p class="paddingleft"><strong>$myVar = 10;</strong></p>
+<p class="paddingleft evensmaller">Eens een variable gedefinieerd is kan men het gaan gebruiken in referenties.<br>Bv, de waarde van de variable kan worden uitgeprint met een echo commando zoals:</p>
+<p class="paddingleft"><strong>echo $myVar; // "10"</strong></p>
 </div>
 
 
@@ -851,7 +851,7 @@ which may be either get or post.
 <xmp class="prettyprint small">
 Sending with post
 </xmp>
-<p class="evensmaller">
+<p class="paddingleft evensmaller">
 If the form is sent using the post method the data will be available 
 through the $_POST array. The names of the properties will be the keys 
 in that associative array. Data sent with the post method is 
@@ -869,7 +869,7 @@ echo $_POST['myString'];
 <xmp class="prettyprint small">
 Sending with get
 </xmp>
-<p class="evensmaller">
+<p class="paddingleft evensmaller">
 The alternative to post is to send the form data with the get method 
 and to retrieve it using the $_GET array. The variables are then 
 <strong>displayed</strong> in the address bar, which effectively 
@@ -878,7 +878,7 @@ maintains the state of the page if it is bookmarked and revisited.
 <xmp class="prettyprint small">
 echo $_GET['myString'];
 </xmp>
-<p class="evensmaller">
+<p class="paddingleft evensmaller">
 Because the data is contained in the address bar this means that 
 variables cannot only be passed through HTML forms but also through 
 HTML links. The $_GET array can then be used to change the state of 
@@ -895,7 +895,7 @@ from one page to another.
 <xmp class="prettyprint small">
 Request array
 </xmp>
-<p class="evensmaller">
+<p class="paddingleft evensmaller">
 If it does not matter whether the post or get method was used to send the data the
 $_REQUEST array can be used. This array typically contains the $_GET and $_POST
 arrays, but may also contain the $_COOKIE array.
@@ -903,11 +903,244 @@ arrays, but may also contain the $_COOKIE array.
 <xmp class="prettyprint small">
 echo $_REQUEST['myString']; // "Foo Bar"
 </xmp>
-<p class="evensmaller">
-The content of the $_REQUEST array can be set in the PHP configuration file1 and
+<p class="paddingleft evensmaller">
+The content of the $_REQUEST array can be set in the PHP configuration file and
 varies between PHP distributions. Due to security concerns, the $_COOKIE array is usually
 not included.
 </p>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Security concerns
+Any user-provided data can be manipulated and should therefore be validated and
+sanitized before being used. Validation means that you make sure the data is in the form
+you expect, in terms of data type, range and content. For example, the following code
+validates an email address.
+ 
+if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+	echo "Invalid email address";
+
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Security concerns
+Sanitizing is when you disable potentially malicious code in the user input. 
+For example, if the data will be sent to a database it needs to be sanitized 
+with the mysql_real_escape_string function to disable any embedded SQL code.
+// Sanitize for database use
+$name = mysql_real_escape_string($_POST['name']);
+// Execute SQL command
+$sql = "SELECT * FROM users WHERE user='" . $name . "'";
+$result = mysql_query($sql);
+ 
+When user supplied data is to be output to the web page as text the
+htmlspecialchars function should be used. It will disable any HTML markup 
+so the user input is displayed but not interpreted.
+// Sanitize for web page use
+echo htmlspecialchars($_POST['comment']); 
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Submitting arrays
+Form data can be grouped into arrays by including array square brackets 
+after the variable names in the form. This works for all form input elements, 
+including <input>, <select> and <textarea>.
+ 
+<input type="text" name="myArr[]" />
+<input type="text" name="myArr[]" />
+ 
+The elements may also be assigned their own array keys.
+ 
+<input type="text" name="myArr[name]" />
+ 
+Once submitted, the array will be available for use in the script.
+ 
+$val1 = $_POST['myArr'][0];
+$val2 = $_POST['myArr'][1];
+$name = $_POST['myArr']['name'];
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+The form <select> element has an attribute for allowing multiple items 
+to be selected from the list.
+ 
+<select name="myArr[]" size="3" multiple="true">
+	<option value="apple">Apple</option>
+	<option value="orange">Orange</option>
+	<option value="pear">Pear</option>
+</select>
+ 
+When this multi-select element is included in a form, the array brackets 
+become necessary for retrieving the selected values in the script.
+
+foreach ($_POST['myArr'] as $item)
+	echo $item . ' '; // ex "apple orange pear"
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint xsmall">
+File uploading
+The HTML form provides a file input type that allows files to be uploaded 
+to the server. For file uploading to work the form’s optional enctype 
+attribute must be set to “multipart/form-data” as in the example below.
+ 
+<form action="MyPage.php" method="post" enctype="multipart/form-data">
+	<input name="myfile" type="file" />
+	<input type="submit" value="Upload" />
+</form>
+ 
+Information about the uploaded file is stored in the $_FILES array. 
+The keys of this associative array are seen in the following table.
+</xmp>
+    <div class="paddingleftsmall">
+    <table style="width: 500px;">
+        <thead>
+        <tr class="fragmentsmallstrong">
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="fragmentsmall">
+            <td>name</td>
+            <td>Original name of uploaded file</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>tmp_name</td>
+            <td>Path to temporary server copy</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>type</td>
+            <td>Mime type of the file</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>size</td>
+            <td>File size in bytes</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>error</td>
+            <td>Error code</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint xxsmall">
+A received file is only temporarily stored on the server. If it is not saved 
+by the script it will be deleted. A simple example of how to save the file is 
+given below. The example checks the error code to make sure that the file was 
+successfully received, and if so moves the file out of the temporary folder 
+to save it. In practice, you would also want to examine the file size and type 
+in order to determine whether the file is to be kept.
+</xmp>
+<xmp class="prettyprint xsmall">
+$dest = 'upload\\' . basename($_FILES['myfile']['name']);
+$file = $_FILES['myfile']['tmp_name'];
+$err = $_FILES['myfile']['error'];
+if($err == 0 && move_uploaded_file($file, $dest))
+	echo 'File successfully uploaded';
+</xmp>
+<xmp class="prettyprint xxsmall">
+Two new functions are seen in this example. The move_uploaded_file function 
+checks to ensure the first argument contains a valid upload file, and if so 
+it moves it to the path and renames it to the filename, specified by the 
+second argument. The specified folder must already exist and if the function 
+succeeds in moving the file it returns true. The other new function is basename. 
+It returns the filename component of a path, including the file extension.
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>HTML forms (vervolg)</h1>
+<xmp class="prettyprint small">
+Superglobals
+</xmp>
+<!--
+As seen in this chapter there are a number of built-in associate arrays that make external
+data available to PHP scripts. These arrays are known as superglobals, because they are
+automatically available in every scope. There are a total of nine superglobals in PHP, each
+of which is described briefly below.
+-->
+    <div class="paddingleft">
+    <table style="width: 900px;">
+        <thead>
+        <tr class="fragmentsmallstrong">
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="fragmentsmall">
+            <td>$GLOBALS</td>
+            <td>Contains all global variables, including other superglobals</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_GET</td>
+            <td>Contains variables sent via a HTTP GET request</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_POST</td>
+            <td>Contains variables sent via a HTTP POST request</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_FILES</td>
+            <td>Contains variables sent via a HTTP POST file upload</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_COOKIE</td>
+            <td>Contains variables sent via HTTP cookies</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_SESSION</td>
+            <td>Contains variables stored in a user’s session</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_REQUEST</td>
+            <td>Contains $_GET, $_POST and possibly $_COOKIE variables</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_SERVER</td>
+            <td>Contains information about the web server and the request made to it</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>$_ENV</td>
+            <td>Contains all environment variables set by the web server</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+<xmp class="prettyprint xxsmall">
+The content of the variables $_GET, $_POST, $_COOKIE, $_SERVER and $_ENV is
+included in the output generated by the phpinfo function. This function will also display
+the general settings of the PHP configuration file, php.ini, along with other information
+regarding PHP.
+phpinfo(); // display PHP information
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Cookies</h1>
+<xmp class="prettyprint small">
+A cookie is a small file kept on the client’s computer that can be used to store data 
+relating to that user.
+</xmp>
 </div>
 
 <div class="slide summary">

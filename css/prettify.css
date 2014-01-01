@@ -142,6 +142,11 @@ pre.xsmall {
     font-size: 18px;
 }
 
+xmp.xxsmall,
+pre.xxsmall {
+    font-size: 16px;
+}
+
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
     margin-top: 0;
