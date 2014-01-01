@@ -912,35 +912,40 @@ not included.
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
+<xmp class="prettyprint xsmall">
 Security concerns
 Any user-provided data can be manipulated and should therefore be validated and
 sanitized before being used. Validation means that you make sure the data is in the form
 you expect, in terms of data type, range and content. For example, the following code
 validates an email address.
- 
+</xmp>
+<xmp class="prettyprint small">
 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 	echo "Invalid email address";
-
 </xmp>
 </div>
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
+<xmp class="prettyprint xsmall">
 Security concerns
 Sanitizing is when you disable potentially malicious code in the user input. 
 For example, if the data will be sent to a database it needs to be sanitized 
 with the mysql_real_escape_string function to disable any embedded SQL code.
+</xmp>
+<xmp class="prettyprint small">
 // Sanitize for database use
 $name = mysql_real_escape_string($_POST['name']);
 // Execute SQL command
 $sql = "SELECT * FROM users WHERE user='" . $name . "'";
 $result = mysql_query($sql);
- 
+</xmp>
+<xmp class="prettyprint xsmall">
 When user supplied data is to be output to the web page as text the
 htmlspecialchars function should be used. It will disable any HTML markup 
 so the user input is displayed but not interpreted.
+</xmp>
+<xmp class="prettyprint small">
 // Sanitize for web page use
 echo htmlspecialchars($_POST['comment']); 
 </xmp>
@@ -948,21 +953,31 @@ echo htmlspecialchars($_POST['comment']);
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
-Submitting arrays
+<p class="paddingleft evensmaller">Submitting arrays</p>
+<xmp class="prettyprint xxsmall">
 Form data can be grouped into arrays by including array square brackets 
 after the variable names in the form. This works for all form input elements, 
 including <input>, <select> and <textarea>.
- 
+</xmp>
+<br>
+<xmp class="prettyprint small">
 <input type="text" name="myArr[]" />
 <input type="text" name="myArr[]" />
- 
+</xmp>
+<br>
+<xmp class="prettyprint xxsmall">
 The elements may also be assigned their own array keys.
- 
+</xmp>
+<br>
+<xmp class="prettyprint small">
 <input type="text" name="myArr[name]" />
- 
+</xmp>
+<br>
+<xmp class="prettyprint xxsmall">
 Once submitted, the array will be available for use in the script.
- 
+</xmp>
+<br>
+<xmp class="prettyprint small">
 $val1 = $_POST['myArr'][0];
 $val2 = $_POST['myArr'][1];
 $name = $_POST['myArr']['name'];
@@ -971,19 +986,22 @@ $name = $_POST['myArr']['name'];
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
+<xmp class="prettyprint xsmall">
 The form <select> element has an attribute for allowing multiple items 
 to be selected from the list.
- 
+</xmp>
+<xmp class="prettyprint small">
 <select name="myArr[]" size="3" multiple="true">
 	<option value="apple">Apple</option>
 	<option value="orange">Orange</option>
 	<option value="pear">Pear</option>
 </select>
- 
+</xmp>
+<xmp class="prettyprint xsmall">
 When this multi-select element is included in a form, the array brackets 
 become necessary for retrieving the selected values in the script.
-
+</xmp>
+<xmp class="prettyprint small">
 foreach ($_POST['myArr'] as $item)
 	echo $item . ' '; // ex "apple orange pear"
 </xmp>
@@ -991,17 +1009,21 @@ foreach ($_POST['myArr'] as $item)
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint small">
 File uploading
+</xmp>
+<xmp class="prettyprint xsmall">
 The HTML form provides a file input type that allows files to be uploaded 
 to the server. For file uploading to work the form’s optional enctype 
 attribute must be set to “multipart/form-data” as in the example below.
- 
+</xmp>
+<xmp class="prettyprint small">
 <form action="MyPage.php" method="post" enctype="multipart/form-data">
 	<input name="myfile" type="file" />
 	<input type="submit" value="Upload" />
 </form>
- 
+</xmp>
+<xmp class="prettyprint xsmall">
 Information about the uploaded file is stored in the $_FILES array. 
 The keys of this associative array are seen in the following table.
 </xmp>
@@ -1137,9 +1159,46 @@ phpinfo(); // display PHP information
 
 <div class="slide">
     <h1>Cookies</h1>
+<xmp class="prettyprint xsmall">
+A cookie is a small file kept on the client’s computer that can be used 
+to store data relating to that user.
+</xmp>
+<p class="paddingleft evensmaller">Creating cookies</p>
+<xmp class="prettyprint xxsmall">
+To create a cookie the setcookie function is used. This function must be called before
+any output is sent to the browser. It has three mandatory parameters that contain the
+name, value and expiration date of the cookie.
+</xmp>
 <xmp class="prettyprint small">
-A cookie is a small file kept on the client’s computer that can be used to store data 
-relating to that user.
+setcookie("lastvisit", date("H:i:s"), time() + 60*60);
+</xmp>
+<xmp class="prettyprint xxsmall">
+The value is here set with the date function, which returns a string formatted
+according to the specified format string. The expiration date is measured in seconds and
+is usually set relative to the current time in seconds retrieved through the time function.
+In this example, the cookie expires after one hour.
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Cookies (vervolg)</h1>
+<p class="paddingleft evensmaller">Cookie array</p>
+<xmp class="prettyprint xxsmall">
+Once the cookie has been set for a user this cookie will be sent along the next time that
+user views the page and can then be accessed through the $_COOKIE array.
+</xmp>
+<xmp class="prettyprint small">
+if (isset($_COOKIE['lastvisit']))
+	echo "Last visit: " . $_COOKIE['lastvisit']; 
+</xmp>
+<p class="paddingleft evensmaller">Deleting cookies</p>
+<xmp class="prettyprint xxsmall">
+A cookie can be deleted manually by recreating that same cookie with an old expiration
+date. It will then be removed when the browser is closed.
+</xmp>
+<br>
+<xmp class="prettyprint small">
+setcookie("lastvisit", 0, 0);
 </xmp>
 </div>
 
