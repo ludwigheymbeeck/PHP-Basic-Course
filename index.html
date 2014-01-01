@@ -1202,6 +1202,65 @@ setcookie("lastvisit", 0, 0);
 </xmp>
 </div>
 
+<div class="slide">
+    <h1>Sessions</h1>
+<xmp class="prettyprint xxsmall">
+A session provides a way to make variables accessible across multiple web pages. Unlike
+cookies, session data is stored on the server.
+</xmp>
+<p class="paddingleft evensmaller">Starting a session</p>
+<xmp class="prettyprint xxsmall">
+To begin a session the session_start function is used. This function must appear before
+any output is send to the web page.
+</xmp>
+<br>
+<xmp class="prettyprint small">
+<?php session_start(); ?>
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Sessions (vervolg)</h1>
+<p class="paddingleft evensmaller">Session array</p>
+<xmp class="prettyprint xxsmall">
+With the session started the $_SESSION array can be used to store session data as well
+as retrieve it. As an example, the page view count can be stored with the code below.
+The first time the page is viewed the session element is initialized to one.
+</xmp>
+<br>
+<xmp class="prettyprint small">
+if(isset($_SESSION['views']))
+	$_SESSION['views'] += 1;
+else
+	$_SESSION['views'] = 1;
+</xmp>
+<br>
+<xmp class="prettyprint xxsmall">
+This element can now be retrieved from any page on the domain as long as
+session_start is called on the top of that page.
+</xmp>
+<br>
+<xmp class="prettyprint small">
+echo 'Views: ' . $_SESSION['views'];
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Sessions (vervolg)</h1>
+<p class="paddingleft evensmaller">Deleting a session</p>
+<xmp class="prettyprint xxsmall">
+A session is guaranteed to last until the user leaves the website. Then the garbage
+collector is free to delete that session. To manually remove a session variable the unset
+function can be used, and for removing all session variables there is the session_destroy
+function.
+</xmp>
+<br>
+<xmp class="prettyprint small">
+unset($_SESSION['views']); // destroy session variable
+session_destroy(); // destroy session
+</xmp>
+</div>
+
 <div class="slide summary">
     <h1>Summary</h1>
     <!-- <ol reversed> -->
