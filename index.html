@@ -337,6 +337,79 @@ $c = ($a == $b); // true
 </div>
 
 <div class="slide">
+    <h1>Dates and Times</h1>
+<h6 class="paddingleft">The Timestamp</h6>
+<xmp class="prettyprint xxsmall">
+The date function always formats a timestamp, whether you supply one or not. What's a
+timestamp? A timestamp is the number of seconds from January 1, 1970 at 00:00. Otherwise
+known as the Unix Timestamp, this measurement is a widely used standard that PHP has 
+chosen to utilize.
+
+The date function uses letters of the alphabet to represent various parts of atypical 
+date and time format. The letters we will be using in our first example are:
+d: The day of the month: 01 through 31.
+m: The current month, as a number: 01 through 12.
+y: The current year in two digits: 00 through 99.
+</xmp>
+<xmp class="prettyprint small">
+<?php
+echo date("m/d/y"); // today's date e.g.: 24/11/04
+?>
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Dates and Times (vervolg)</h1>
+<h6 class="paddingleft">Supplying a Timestamp</h6>
+<xmp class="prettyprint xsmall">
+<?php
+$nextWeek = time() + (7 * 24 * 60 * 60);
+                   // 7 days; 24 hours; 60 mins; 60secs
+echo 'Now:       '. date('Y-m-d') ."\n";
+echo 'Next Week: '. date('Y-m-d', $nextWeek) ."\n";
+// or using strtotime():
+echo 'Next Week: '. date('Y-m-d', strtotime('+1 week')) ."\n";
+
+// mktime(hour, minute, second, month, day, year, daylight savings time)
+$tomorrow = mktime(0, 0, 0, date("m"), date("d")+1, date("y"));
+echo "Tomorrow is ".date("m/d/y", $tomorrow);
+?>
+</xmp>
+<br>
+<xmp class="prettyprint small">
+Refer to php.net for full date format info.
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Countdown programma</p>
+	<xmp class="prettyprint xsmall">
+Maak een countdown voor een website met PHP. 
+Maak gebruik van de time en mktime functies.
+Geef het aantal resterende dagen tot het einde van deze cursus.
+Doe dit door middel van de melding "End of course is in x days". 
+Met x de countdownwaarde die meegeprint wordt.
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Countdown programma</p>
+	<xmp class="prettyprint xsmall">
+<?php
+$target = mktime(0, 0, 0, 04, 02, 2014) ; // 02 april 2014 = einddatum 
+// mktime(hour, minute, second, month, day, year, daylight savings time)
+$today = time(); // vandaag
+$difference =($target-$today) ; // verschil
+$days =(int) ($difference/86400) ; // verschil in dagen
+// 86400 = 24 (uren) * 60 (minuten) * 60 (seconden)
+print "End of course is in $days days";
+?> 
+	</xmp>
+</div>
+
+<div class="slide">
     <h1>Arrays</h1>
 <xmp class="prettyprint small">
 Numeric arrays
@@ -1202,45 +1275,6 @@ session_destroy(); // destroy session
 </div>
 
 <div class="slide">
-    <h1>Dates and Times</h1>
-<h6 class="paddingleft">The Timestamp</h6>
-<xmp class="prettyprint xxsmall">
-The date function always formats a timestamp, whether you supply one or not. What's a
-timestamp? A timestamp is the number of seconds from January 1, 1970 at 00:00. Otherwise
-known as the Unix Timestamp, this measurement is a widely used standard that PHP has 
-chosen to utilize.
-
-The date function uses letters of the alphabet to represent various parts of atypical 
-date and time format. The letters we will be using in our first example are:
-d: The day of the month: 01 through 31.
-m: The current month, as a number: 01 through 12.
-y: The current year in two digits: 00 through 99.
-</xmp>
-<xmp class="prettyprint small">
-<?php
-echo date("m/d/y"); // today's date e.g.: 24/11/04
-?>
-</xmp>
-</div>
-
-<div class="slide">
-    <h1>Dates and Times (vervolg)</h1>
-<h6 class="paddingleft">Supplying a Timestamp</h6>
-<xmp class="prettyprint xsmall">
-<?php
-// mktime(hour, minute, second, month, day, year, daylight savings time)
-$tomorrow = mktime(0, 0, 0, date("m"), date("d")+1, date("y"));
-echo "Tomorrow is ".date("m/d/y", $tomorrow);
-?>
-</xmp>
-<br>
-<xmp class="prettyprint small">
-Refer to php.net for full date format info.
-</xmp>
-<br>
-</div>
-
-<div class="slide">
     <h1>File Create</h1>
 <xmp class="prettyprint xsmall">
 Manipulating files is a basic necessity for serious programmers and PHP gives 
@@ -1520,9 +1554,86 @@ It returns the filename component of a path, including the file extension.
 </xmp>
 </div>
 
+<div class="slide">
+    <h1>Sending E-mail</h1>
+<xmp class="prettyprint xxsmall">
+Only one real mail sending function exists in PHP: mail(). This function, which returns a
+Boolean, attempts to send one message using the data within the parentheses. The simplest
+use of this function is:
+
+<?php
+mail('receiver@receipthost.com', 'Subject Line', "Body of e-mail\r\nwith lines separated.");
+?>
+
+You can also, as always, use variables instead of hard-coded values:
+
+<?php
+$address = 'santa@claus.com';
+$subject = 'All I want for Christmas';
+$body = "Is my two front teeth.\r\nSincerely, Joey";
+$mailsend = mail($address, $subject, $body);
+echo $mailsend;
+?>
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Sending E-mail From a Form</h1>
+<xmp class="prettyprint xxsmall">
+Form-based, mail-sending page can be useful for many purposes, such as requesting quotes, 
+reporting bugs, and getting technical support.
+
+<html>
+<head>
+<title>contactus.php</title>
+</head>
+<body>
+<p>Contact Us Form:</p>
+<form method=post action="contactusmail.php">
+First name: <input type="text" size=30 name="FirstName"><br>
+Last name: <input type="text" size=30 name="LastName"><br>
+Your Email Address: <input type="text" size=30 name="Email"><br>
+Subject: <input type="text" size=30 name="subject"><br>
+Message:<textarea name="content" rows=6 cols=50></textarea><br>
+<input type="submit" name="Submit">
+</form>
+</body>
+</html>
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>Sending E-mail From a Form (vervolg)</h1>
+<xmp class="prettyprint xxsmall">
+<html>
+<head>
+<title>contactusmail.php</title>
+</head>
+<body>
+<?php
+// you could also save this information to a database
+$LastName = $_POST['LastName'];
+$FirstName = $_POST['FirstName'];
+$Email = $_POST['Email'];
+$Subject = $_POST['subject'];
+$Content = $_POST['content'];
+$formsent = mail('help@example.com', $Subject,
+"Request from: $LastName $FirstName width email: $Email\r\n"."Message: ".$Content);
+if ($formsent) {
+	echo "Hi, $FirstName. We have received your request and will try to respond 
+	within 24 hours. Thanks for visiting us!";
+} else (
+	echo "I'm sorry, there's a problem with your form. Please try again.";
+)
+?>
+</body>
+</html>
+</xmp>
+</div>
+
+<!--
 <div class="slide summary">
     <h1>Summary</h1>
-    <!-- <ol reversed> -->
 	<ol class="paddingleft">
         <li>Don't generate the UI on the server</li>
         <li>Limit network access</li>
@@ -1536,6 +1647,7 @@ It returns the filename component of a path, including the file extension.
         <li>Test</li>
     </ol>
 </div>
+-->
 
 </div> <!-- end of '#slides' -->
 
