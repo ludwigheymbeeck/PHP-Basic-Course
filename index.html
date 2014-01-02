@@ -131,26 +131,28 @@ comment */
 
 <div class="slide">
     <h1>Variables</h1>
-<h2>Defining variables</h2>
+<h6 class="paddingleft">Defining variables</h6>
 <p class="paddingleft evensmaller">Een variable begint met een dollar teken ($) gevolgd met de naamgeving. Bv:<br></p>
-<p class="paddingleft"><strong>$myVar;</strong></p>
+<xmp class="prettyprint">$myVar;</xmp>
 <p class="paddingleft evensmaller">Een waarde kan toegewezen worden aan een variable dmv de operator (=).<br>De variable wordt dan geinitialiseerd.</p>
-<p class="paddingleft"><strong>$myVar = 10;</strong></p>
+<xmp class="prettyprint">$myVar = 10;</xmp>
 <p class="paddingleft evensmaller">Eens een variable gedefinieerd is kan men het gaan gebruiken in referenties.<br>Bv, de waarde van de variable kan worden uitgeprint met een echo commando zoals:</p>
-<p class="paddingleft"><strong>echo $myVar; // "10"</strong></p>
+<xmp class="prettyprint">echo $myVar; // "10"</xmp>
 </div>
 
 
 <div class="slide">
     <h1>Variables: data types</h1>
+<h6 class="paddingleft">Integer type</h6>
 <xmp class="prettyprint">
-Integer type
 $myInt = 1234; // decimal number
 $myInt = 0b10; // binary number (2 decimal)
 $myInt = 0123; // octal number (83 decimal)
 $myInt = 0x1A; // hexadecimal number (26 decimal)
-
-Floating-point type
+</xmp>
+<br><br>
+<h6 class="paddingleft">Floating-point type</h6>
+<xmp class="prettyprint">
 $myFloat = 1.234;
 $myFloat = 3e2; // 3*10^2 = 300
 </xmp>
@@ -291,25 +293,6 @@ Delimiting strings
 $c = 'World';
 echo "Hello $c"; // "Hello World"
 echo 'Hello $c'; // "Hello $c"
-</xmp>
-</div>
-
-<div class="slide">
-    <h1>String (vervolg)</h1>
-<xmp class="prettyprint">
-Comparison operators
-$x = (2 == 3); // false // equal to
-$x = (2 != 3); // true // not equal to
-$x = (2 <> 3); // true // not equal to (alternative)
-$x = (2 === 3); // false // identical
-$x = (2 !== 3); // true // not identical
-$x = (2 > 3); // false // greater than
-$x = (2 < 3); // true // less than
-$x = (2 >= 3); // false // greater than or equal to
-$x = (2 <= 3); // true // less than or equal to
-
-$x = (1 == "1"); // true (same value)
-$x = (1 === "1"); // false (different types)
 </xmp>
 </div>
 
@@ -854,9 +837,7 @@ new pages to my website!</p>
 <xmp class="prettyprint xsmall">
 Require is similar to Include but unlike include it will not execute code 
 after failed inclusion.
-</xmp>
-<br>
-<xmp class="prettyprint small">
+
 <?php
 include("noFileExistsHere.php");
 echo "Hello World!";
@@ -897,9 +878,7 @@ which may be either get or post.
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
-Sending with post
-</xmp>
+<h6 class="paddingleft">Sending with post</h6>
 <p class="paddingleft evensmaller">
 If the form is sent using the post method the data will be available 
 through the $_POST array. The names of the properties will be the keys 
@@ -915,9 +894,7 @@ echo $_POST['myString'];
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
-Sending with get
-</xmp>
+<h6 class="paddingleft">Sending with get</h6>
 <p class="paddingleft evensmaller">
 The alternative to post is to send the form data with the get method 
 and to retrieve it using the $_GET array. The variables are then 
@@ -941,9 +918,7 @@ from one page to another.
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
-Request array
-</xmp>
+<h6 class="paddingleft">Request array</h6>
 <p class="paddingleft evensmaller">
 If it does not matter whether the post or get method was used to send the data the
 $_REQUEST array can be used. This array typically contains the $_GET and $_POST
@@ -961,12 +936,12 @@ not included.
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
+<h6 class="paddingleft">Security concerns</h6>
 <xmp class="prettyprint xsmall">
-Security concerns
 Any user-provided data can be manipulated and should therefore be validated and
-sanitized before being used. Validation means that you make sure the data is in the form
-you expect, in terms of data type, range and content. For example, the following code
-validates an email address.
+sanitized before being used. Validation means that you make sure the data is 
+in the form you expect, in terms of data type, range and content. For example, 
+the following code validates an email address.
 </xmp>
 <xmp class="prettyprint small">
 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
@@ -976,8 +951,8 @@ if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
+<h6 class="paddingleft">Security concerns (vervolg)</h6>
 <xmp class="prettyprint xsmall">
-Security concerns
 Sanitizing is when you disable potentially malicious code in the user input. 
 For example, if the data will be sent to a database it needs to be sanitized 
 with the mysql_real_escape_string function to disable any embedded SQL code.
@@ -1002,7 +977,7 @@ echo htmlspecialchars($_POST['comment']);
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<p class="paddingleft evensmaller">Submitting arrays</p>
+<h6 class="paddingleft">Submitting arrays</h6>
 <xmp class="prettyprint xxsmall">
 Form data can be grouped into arrays by including array square brackets 
 after the variable names in the form. This works for all form input elements, 
@@ -1058,21 +1033,17 @@ foreach ($_POST['myArr'] as $item)
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
-File uploading
-</xmp>
+<h6 class="paddingleft">File uploading</h6>
 <xmp class="prettyprint xsmall">
 The HTML form provides a file input type that allows files to be uploaded 
 to the server. For file uploading to work the form’s optional enctype 
 attribute must be set to “multipart/form-data” as in the example below.
-</xmp>
-<xmp class="prettyprint small">
+
 <form action="MyPage.php" method="post" enctype="multipart/form-data">
 	<input name="myfile" type="file" />
 	<input type="submit" value="Upload" />
 </form>
-</xmp>
-<xmp class="prettyprint xsmall">
+
 Information about the uploaded file is stored in the $_FILES array. 
 The keys of this associative array are seen in the following table.
 </xmp>
@@ -1108,11 +1079,11 @@ The keys of this associative array are seen in the following table.
         </tbody>
     </table>
     </div>
-</xmp>
 </div>
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
+<h6 class="paddingleft">File uploading (vervolg)</h6>
 <xmp class="prettyprint xxsmall">
 A received file is only temporarily stored on the server. If it is not saved 
 by the script it will be deleted. A simple example of how to save the file is 
@@ -1140,9 +1111,7 @@ It returns the filename component of a path, including the file extension.
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<xmp class="prettyprint small">
-Superglobals
-</xmp>
+<h6 class="paddingleft">Superglobals</h6>
 <!--
 As seen in this chapter there are a number of built-in associate arrays that make external
 data available to PHP scripts. These arrays are known as superglobals, because they are
@@ -1208,11 +1177,11 @@ phpinfo(); // display PHP information
 
 <div class="slide">
     <h1>Cookies</h1>
-<xmp class="prettyprint xsmall">
-A cookie is a small file kept on the client’s computer that can be used 
-to store data relating to that user.
+<xmp class="prettyprint xxsmall">
+A cookie is a small file kept on the client's computer that can be used to store data 
+relating to that user.
 </xmp>
-<p class="paddingleft evensmaller">Creating cookies</p>
+<h6 class="paddingleft">Creating cookies</h6>
 <xmp class="prettyprint xxsmall">
 To create a cookie the setcookie function is used. This function must be called before
 any output is sent to the browser. It has three mandatory parameters that contain the
@@ -1223,15 +1192,15 @@ setcookie("lastvisit", date("H:i:s"), time() + 60*60);
 </xmp>
 <xmp class="prettyprint xxsmall">
 The value is here set with the date function, which returns a string formatted
-according to the specified format string. The expiration date is measured in seconds and
-is usually set relative to the current time in seconds retrieved through the time function.
-In this example, the cookie expires after one hour.
+according to the specified format string. The expiration date is measured in seconds 
+and is usually set relative to the current time in seconds retrieved through the time 
+function. In this example, the cookie expires after one hour.
 </xmp>
 </div>
 
 <div class="slide">
     <h1>Cookies (vervolg)</h1>
-<p class="paddingleft evensmaller">Cookie array</p>
+<h6 class="paddingleft">Cookie array</h6>
 <xmp class="prettyprint xxsmall">
 Once the cookie has been set for a user this cookie will be sent along the next time that
 user views the page and can then be accessed through the $_COOKIE array.
@@ -1240,7 +1209,7 @@ user views the page and can then be accessed through the $_COOKIE array.
 if (isset($_COOKIE['lastvisit']))
 	echo "Last visit: " . $_COOKIE['lastvisit']; 
 </xmp>
-<p class="paddingleft evensmaller">Deleting cookies</p>
+<h6 class="paddingleft">Deleting cookies</h6>
 <xmp class="prettyprint xxsmall">
 A cookie can be deleted manually by recreating that same cookie with an old expiration
 date. It will then be removed when the browser is closed.
@@ -1257,7 +1226,7 @@ setcookie("lastvisit", 0, 0);
 A session provides a way to make variables accessible across multiple web pages. Unlike
 cookies, session data is stored on the server.
 </xmp>
-<p class="paddingleft evensmaller">Starting a session</p>
+<h6 class="paddingleft">Starting a session</h6>
 <xmp class="prettyprint xxsmall">
 To begin a session the session_start function is used. This function must appear before
 any output is send to the web page.
@@ -1270,7 +1239,7 @@ any output is send to the web page.
 
 <div class="slide">
     <h1>Sessions (vervolg)</h1>
-<p class="paddingleft evensmaller">Session array</p>
+<h6 class="paddingleft">Session array</h6>
 <xmp class="prettyprint xxsmall">
 With the session started the $_SESSION array can be used to store session data as well
 as retrieve it. As an example, the page view count can be stored with the code below.
@@ -1285,8 +1254,8 @@ else
 </xmp>
 <br>
 <xmp class="prettyprint xxsmall">
-This element can now be retrieved from any page on the domain as long as
-session_start is called on the top of that page.
+This element can now be retrieved from any page on the domain as long as session_start 
+is called on the top of that page.
 </xmp>
 <br>
 <xmp class="prettyprint small">
@@ -1296,7 +1265,7 @@ echo 'Views: ' . $_SESSION['views'];
 
 <div class="slide">
     <h1>Sessions (vervolg)</h1>
-<p class="paddingleft evensmaller">Deleting a session</p>
+<h6 class="paddingleft">Deleting a session</h6>
 <xmp class="prettyprint xxsmall">
 A session is guaranteed to last until the user leaves the website. Then the garbage
 collector is free to delete that session. To manually remove a session variable the unset
@@ -1312,8 +1281,7 @@ session_destroy(); // destroy session
 
 <div class="slide">
     <h1>Dates and Times</h1>
-<xmp class="prettyprint xsmall">The Timestamp</xmp>
-<br>
+<h6 class="paddingleft">The Timestamp</h6>
 <xmp class="prettyprint xxsmall">
 The date function always formats a timestamp, whether you supply one or not. What's a
 timestamp? A timestamp is the number of seconds from January 1, 1970 at 00:00. Otherwise
@@ -1322,9 +1290,9 @@ chosen to utilize.
 
 The date function uses letters of the alphabet to represent various parts of atypical 
 date and time format. The letters we will be using in our first example are:
-.:. d: The day of the month: 01 through 31.
-.:. m: The current month, as a number: 01 through 12.
-.:. y: The current year in two digits: 00 through 99.
+d: The day of the month: 01 through 31.
+m: The current month, as a number: 01 through 12.
+y: The current year in two digits: 00 through 99.
 </xmp>
 <xmp class="prettyprint small">
 <?php
@@ -1335,11 +1303,8 @@ echo date("m/d/y"); // today's date e.g.: 24/11/04
 
 <div class="slide">
     <h1>Dates and Times (vervolg)</h1>
+<h6 class="paddingleft">Supplying a Timestamp</h6>
 <xmp class="prettyprint xsmall">
-Supplying a Timestamp
-</xmp>
-<br>
-<xmp class="prettyprint small">
 <?php
 // mktime(hour, minute, second, month, day, year, daylight savings time)
 $tomorrow = mktime(0, 0, 0, date("m"), date("d")+1, date("y"));
@@ -1347,7 +1312,7 @@ echo "Tomorrow is ".date("m/d/y", $tomorrow);
 ?>
 </xmp>
 <br>
-<xmp class="prettyprint xsmall">
+<xmp class="prettyprint small">
 Refer to php.net for full date format info.
 </xmp>
 <br>
@@ -1382,24 +1347,24 @@ fclose($fh);
 ?>
 </xmp>
 <br>
-<xmp class="prettyprint xxsmall">
-Read: 'r' 
-	Open a file for read only use. The file pointer begins at the front of the file.
-Write: 'w' 
-	Open a file for write only use. In addition, the data in the file is erased and 
-	you will begin writing data at the beginning of the file.
-Append: 'a' 
-	Open a file for write only use. However, the data in the file is preserved and 
-	you begin willwriting data at the end of the file.
-Read/Write: 'r+' 
-	Opens a file so that it can be read from and written to. The file pointer 
-	is at the beginning of the file.
-Write/Read: 'w+' 
-	Same as r+, except that it deletes all information in the file when the 
-	file is opened.
-Append: 'a+' 
-	Same as r+, except that the file pointer is at the end of the file.
-</xmp>
+<p class="paddingleft smallest">
+<strong>Read: 'r' </strong><br>
+Open a file for read only use. The file pointer begins at the front of the file.<br>
+<strong>Write: 'w' </strong><br>
+Open a file for write only use. In addition, the data in the file is erased and 
+you will begin writing data at the beginning of the file.<br>
+<strong>Append: 'a' </strong><br>
+Open a file for write only use. However, the data in the file is preserved and 
+you begin willwriting data at the end of the file.<br>
+<strong>Read/Write: 'r+' </strong><br>
+Opens a file so that it can be read from and written to. The file pointer 
+is at the beginning of the file.<br>
+<strong>Write/Read: 'w+' </strong><br>
+Same as r+, except that it deletes all information in the file when the 
+file is opened.<br>
+<strong>Append: 'a+' </strong><br>
+Same as r+, except that the file pointer is at the end of the file.
+</p>
 </div>
 
 <div class="slide">
@@ -1413,14 +1378,14 @@ fclose($ourFileHandle);
 </xmp>
 <br>
 <xmp class="prettyprint xsmall">
-After a file has been closed down with fclose it is impossible to read, write or appendto that 
-file unless it is once more opened up with the fopen function.
+After a file has been closed down with fclose it is impossible to read, write 
+or appendto that file unless it is once more opened up with the fopen function.
 </xmp>
 </div>
 
 <div class="slide">
     <h1>File Write</h1>
-<xmp class="prettyprint xxsmall">
+<xmp class="prettyprint xsmall">
 <?php
 $myFile = "testFile.txt";
 $fh = fopen($myFile, 'w') or die("can't open file");
@@ -1430,11 +1395,19 @@ $stringData = "Tracy Tanner\n";
 fwrite($fh, $stringData);
 fclose($fh);
 ?>
-Contents of the testFile.txt File:
-Bobby Bopper
+</xmp>
+<p class="paddingleft evensmaller">
+<i>Contents of the testFile.txt File:</i><br><br>
+Bobby Bopper<br>
 Tracy Tanner
+</p>
+</div>
 
-If you use same testFile.txt now as use following code:
+<div class="slide">
+    <h1>File Write (vervolg)</h1>
+<p class="paddingleft evensmaller">
+<i>If you use same testFile.txt now and use following code:</i></p>
+<xmp class="prettyprint xxsmall">
 <?php
 $myFile = "testFile.txt";
 $fh = fopen($myFile, 'w') or die("can't open file");
@@ -1444,10 +1417,12 @@ $stringData = "Pointy Pinto\n";
 fwrite($fh, $stringData);
 fclose($fh);
 ?>
-then it will overwrite the file and the contents of testFile.txt is:
-Floppy Jalopy
-Pointy Pinto
 </xmp>
+<p class="paddingleft evensmaller">
+<i>then it will overwrite the file and the contents of testFile.txt is:</i><br><br>
+Floppy Jalopy<br>
+Pointy Pinto
+</p>
 </div>
 
 <div class="slide">
