@@ -1033,84 +1033,6 @@ foreach ($_POST['myArr'] as $item)
 
 <div class="slide">
     <h1>HTML forms (vervolg)</h1>
-<h6 class="paddingleft">File uploading</h6>
-<xmp class="prettyprint xsmall">
-The HTML form provides a file input type that allows files to be uploaded 
-to the server. For file uploading to work the form’s optional enctype 
-attribute must be set to “multipart/form-data” as in the example below.
-
-<form action="MyPage.php" method="post" enctype="multipart/form-data">
-	<input name="myfile" type="file" />
-	<input type="submit" value="Upload" />
-</form>
-
-Information about the uploaded file is stored in the $_FILES array. 
-The keys of this associative array are seen in the following table.
-</xmp>
-    <div class="paddingleftsmall">
-    <table style="width: 500px;">
-        <thead>
-        <tr class="fragmentsmallstrong">
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="fragmentsmall">
-            <td>name</td>
-            <td>Original name of uploaded file</td>
-        </tr>
-        <tr class="fragmentsmall">
-            <td>tmp_name</td>
-            <td>Path to temporary server copy</td>
-        </tr>
-        <tr class="fragmentsmall">
-            <td>type</td>
-            <td>Mime type of the file</td>
-        </tr>
-        <tr class="fragmentsmall">
-            <td>size</td>
-            <td>File size in bytes</td>
-        </tr>
-        <tr class="fragmentsmall">
-            <td>error</td>
-            <td>Error code</td>
-        </tr>
-        </tbody>
-    </table>
-    </div>
-</div>
-
-<div class="slide">
-    <h1>HTML forms (vervolg)</h1>
-<h6 class="paddingleft">File uploading (vervolg)</h6>
-<xmp class="prettyprint xxsmall">
-A received file is only temporarily stored on the server. If it is not saved 
-by the script it will be deleted. A simple example of how to save the file is 
-given below. The example checks the error code to make sure that the file was 
-successfully received, and if so moves the file out of the temporary folder 
-to save it. In practice, you would also want to examine the file size and type 
-in order to determine whether the file is to be kept.
-</xmp>
-<xmp class="prettyprint xsmall">
-$dest = 'upload\\' . basename($_FILES['myfile']['name']);
-$file = $_FILES['myfile']['tmp_name'];
-$err = $_FILES['myfile']['error'];
-if($err == 0 && move_uploaded_file($file, $dest))
-	echo 'File successfully uploaded';
-</xmp>
-<xmp class="prettyprint xxsmall">
-Two new functions are seen in this example. The move_uploaded_file function 
-checks to ensure the first argument contains a valid upload file, and if so 
-it moves it to the path and renames it to the filename, specified by the 
-second argument. The specified folder must already exist and if the function 
-succeeds in moving the file it returns true. The other new function is basename. 
-It returns the filename component of a path, including the file extension.
-</xmp>
-</div>
-
-<div class="slide">
-    <h1>HTML forms (vervolg)</h1>
 <h6 class="paddingleft">Superglobals</h6>
 <!--
 As seen in this chapter there are a number of built-in associate arrays that make external
@@ -1525,7 +1447,76 @@ New Stuff 2
 <div class="slide">
     <h1>File Upload</h1>
 <xmp class="prettyprint xsmall">
-see earlier...
+The HTML form provides a file input type that allows files to be uploaded 
+to the server. For file uploading to work the form’s optional enctype 
+attribute must be set to “multipart/form-data” as in the example below.
+
+<form action="MyPage.php" method="post" enctype="multipart/form-data">
+	<input name="myfile" type="file" />
+	<input type="submit" value="Upload" />
+</form>
+
+Information about the uploaded file is stored in the $_FILES array. 
+The keys of this associative array are seen in the following table.
+</xmp>
+    <div class="paddingleftsmall">
+    <table style="width: 500px;">
+        <thead>
+        <tr class="fragmentsmallstrong">
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="fragmentsmall">
+            <td>name</td>
+            <td>Original name of uploaded file</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>tmp_name</td>
+            <td>Path to temporary server copy</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>type</td>
+            <td>Mime type of the file</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>size</td>
+            <td>File size in bytes</td>
+        </tr>
+        <tr class="fragmentsmall">
+            <td>error</td>
+            <td>Error code</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>File Upload (vervolg)</h1>
+<xmp class="prettyprint xxsmall">
+A received file is only temporarily stored on the server. If it is not saved 
+by the script it will be deleted. A simple example of how to save the file is 
+given below. The example checks the error code to make sure that the file was 
+successfully received, and if so moves the file out of the temporary folder 
+to save it. In practice, you would also want to examine the file size and type 
+in order to determine whether the file is to be kept.
+</xmp>
+<xmp class="prettyprint xsmall">
+$dest = 'upload\\' . basename($_FILES['myfile']['name']);
+$file = $_FILES['myfile']['tmp_name'];
+$err = $_FILES['myfile']['error'];
+if($err == 0 && move_uploaded_file($file, $dest))
+	echo 'File successfully uploaded';
+</xmp>
+<xmp class="prettyprint xxsmall">
+Two new functions are seen in this example. The move_uploaded_file function 
+checks to ensure the first argument contains a valid upload file, and if so 
+it moves it to the path and renames it to the filename, specified by the 
+second argument. The specified folder must already exist and if the function 
+succeeds in moving the file it returns true. The other new function is basename. 
+It returns the filename component of a path, including the file extension.
 </xmp>
 </div>
 
