@@ -133,11 +133,17 @@ comment */
     <h1>Variables</h1>
 <h6 class="paddingleft">Defining variables</h6>
 <p class="paddingleft evensmaller">Een variable begint met een dollar teken ($) gevolgd met de naamgeving. Bv:<br></p>
-<xmp class="prettyprint">$myVar;</xmp>
+<xmp class="prettyprint xsmall">$myVar1;</xmp>
 <p class="paddingleft evensmaller">Een waarde kan toegewezen worden aan een variable dmv de operator (=).<br>De variable wordt dan geinitialiseerd.</p>
-<xmp class="prettyprint">$myVar = 10;</xmp>
+<xmp class="prettyprint xsmall">
+
+$myVar1 = 10; // $myVar1 krijgt het geheel getal 10 als waarde toegewezen
+
+$myVar2 = "test"; // $myVar2 krijgt hier de string "test" toegewezen
+
+</xmp>
 <p class="paddingleft evensmaller">Eens een variable gedefinieerd is kan men het gaan gebruiken in referenties.<br>Bv, de waarde van de variable kan worden uitgeprint met een echo commando zoals:</p>
-<xmp class="prettyprint">echo $myVar; // "10"</xmp>
+<xmp class="prettyprint xsmall">echo $myVar1; // "10"</xmp>
 </div>
 
 
@@ -160,7 +166,7 @@ $myFloat = 3e2; // 3*10^2 = 300
 
 <div class="slide">
 	<h1>Variables: data types (vervolg)</h1>
-<xmp class="prettyprint">
+<xmp class="prettyprint xsmall">
 Bool type
 $myBool = true; // of false
 
@@ -173,6 +179,43 @@ echo $myNull; // string context ("")
 Default values
 echo $myUndefined; // variable is set to null
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Variables</p>
+	<xmp class="prettyprint xsmall">
+Voor de tweede PHP oefening, echo de volgende uitspraak in de browser:
+
+"Twinkle, Twinkle little star."
+
+Vervolgens, maak twee variabelen, waarvan een voor het woord "Twinkle" en een voor 
+het woord "star". Echo de uitspraak naar de browser maar nu gebruik makende van de 
+variabelen. Verander nu de waarde van elke variabele in iets wat je zelf verkiest 
+en print vervolgens de nieuwe uitdrukking uit in je browser op een nieuwe lijn.
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Variables (mogelijke oplossing)</p>
+	<xmp class="prettyprint xsmall">
+<?php 
+echo "Twinkle, Twinkle little star. <br/>"; 
+//Note that html tags can be included along with the text to be echoed. 
+
+$twinkle="Twinkle"; 
+$star="star";    
+//This will print out exactly the same as the first echo statement.
+echo "$twinkle, $twinkle little $star.<br/>"; 
+   
+$twinkle="Thunder"; 
+$star="elephant"; 
+/*This one will be different. Exactly what prints will depend 
+on what valued you assigned to the variables.*/
+echo "$twinkle, $twinkle little $star.";    
+?>   
+	</xmp>
 </div>
 
 <div class="slide">
