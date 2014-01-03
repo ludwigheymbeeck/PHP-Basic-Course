@@ -44,7 +44,9 @@
     var liStr = "";
     for (var i=0; i<slides.length; i++) {
         var h1 = $("h1", slides[i]);
-        liStr += '<li class="topcoat-list__item"><a href="#' + i + '">' + (h1[0] ? h1[0].innerText : '&nbsp;') + "</a></li>";
+        //liStr += '<li class="topcoat-list__item"><a href="#' + i + '">' + (h1[0] ? h1[0].innerText : '&nbsp;') + "</a></li>";
+        liStr += '<li class="topcoat-list__item"><a href="#' + i + '">' + (h1[0] ? h1[0].innerText || h1[0].textContent : '&nbsp;') + "</a></li>";
+        //liStr += '<a href="#' + i + '"><li class="topcoat-list__item">' + (h1[0] ? h1[0].innerText || h1[0].textContent : '&nbsp;') + "</li></a>";
     }
     $("#list").html(liStr);
 

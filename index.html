@@ -1631,6 +1631,47 @@ if ($formsent) {
 </xmp>
 </div>
 
+<div class="slide">
+    <h1>PHP/MySQL Functions</h1>
+<h6 class="paddingleft">Connecting</h6>
+<xmp class="prettyprint xxsmall">
+<?php
+$dbUser = "myuser";
+$dbPass = "mypassword";
+$dbName = "mydatabase";
+$dbHost = "myhost";
+if (!($link=mysql_connect($dbHost, $dbUser, $dbPass))) {
+	error_log(mysql_error(), 3, "/tmp/phplog.err");
+}
+if (!mysql_select_db($dbName, $link)) {
+	error_log(mysql_error(), 3, "/tmp/phplog.err");
+}
+?>
+</xmp>
+</div>
+
+<div class="slide">
+    <h1>PHP/MySQL Functions (vervolg)</h1>
+<h6 class="paddingleft">Fetching Data</h6>
+<xmp class="prettyprint xxsmall">
+<?php
+echo("<table>\n<tr><th>Titles</th></tr>\n<tr>");
+$query = "SELECT title, publisher FROM books";
+$result = mysql_query($query);
+while ($book_row = mysql_fetch_array($result)) {
+	echo("<td>$book_row[0]</td>\n");
+}
+echo("</tr></table><br>\n");
+echo("<table>\n<tr><th>Publishers</th></tr>\n<tr>");
+mysql_data_seek($result, 0);
+while ($book_row = mysql_fetch_array($result)) {
+	echo("<td>$book_row[1]</td>\n");
+}
+echo("</tr></table><br>\n");
+?>
+</xmp>
+</div>
+
 <!--
 <div class="slide summary">
     <h1>Summary</h1>
