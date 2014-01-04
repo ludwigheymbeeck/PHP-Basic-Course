@@ -324,6 +324,104 @@ $a = (true xor true); // false
 </div>
 
 <div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Operators</p>
+	<xmp class="prettyprint xsmall">
+Voor deze oefening ga je gebruik maken van volgende variabelen:
+$x=10;
+$y=7;
+
+om hetvolgende in de browser te weg te schrijven:
+
+10 + 7 = 17
+10 - 7 = 3
+10 * 7 = 70
+10 / 7 = 1.4285714285714
+10 % 7 = 3
+
+Maak gebruik van nummers enkel bij de definitie van de variabelen (2 eerste lijnen).
+Een derde variabele zal dan ook nodig zijn.
+	</xmp>
+</div>
+
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Operators (oplossing)</p>
+	<xmp class="prettyprint xsmall">
+<?php
+$x=10;
+$y=7;
+   
+$result=$x+$y;
+echo "$x + $y = $result<br />";  
+ 
+$result=$x-$y;
+echo "$x - $y = $result<br />";  
+ 
+$result=$x*$y;
+echo "$x * $y = $result<br />";  
+ 
+$result=$x/$y;
+echo "$x / $y = $result<br />";  
+ 
+$result=$x%$y;
+echo "$x % $y = $result<br />";  
+?> 
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code! (2)</h1>
+    <p>Operators</p>
+	<xmp class="prettyprint xsmall">
+Hier vragen we je een script te schrijven met hierna volgende output. 
+Manipuleer enkel 1 variabele gebruik makend van eenvoudige arithmetische 
+operatoren.
+
+Tip: In je script eindigt elke statement met: "Value is now $variable."
+
+output:
+Value is now 8.
+Add 2. Value is now 10.
+Subtract 4. Value is now 6.
+Multiply by 5. Value is now 30.
+Divide by 3. Value is now 10.
+Increment value by one. Value is now 11.
+Decrement value by one. Value is now 10.
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code! (2)</h1>
+    <p>Operators (oplossing)</p>
+	<xmp class="prettyprint xsmall">
+<?php  
+$num = 8;
+echo "Value is now $num.<br/>";  
+ 
+$num += 2;
+echo "Add 2. Value is now $num. <br/>";  
+ 
+$num -= 4;
+echo "Subtract 4. Value is now $num. <br/>";  
+ 
+$num *= 5;
+echo "Multiply by 5. Value is now $num. <br/>";  
+ 
+$num /= 3;
+echo "Divide by 3. Value is now $num. <br/>";  
+ 
+$num++;
+echo "Increment value by one. Value is now $num.<br/>";  
+ 
+$num--;
+echo "Decrement value by one. Value is now $num.";  
+?> 
+	</xmp>
+</div>
+
+<div class="slide">
     <h1>String</h1>
 <xmp class="prettyprint">
 e.g.: $a = 'Hello';
@@ -377,6 +475,32 @@ $a = 'test';
 $b = 'test';
 $c = ($a == $b); // true
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Strings</p>
+	<xmp class="prettyprint xsmall">
+Schrijf een script gebruik makende van volgende variabele:
+$around="around";
+
+Maak gebruik van enkelvoudige quotes (' ') en de samenstellingsoperator. 
+Met de zojuist aangemaakte variabele, $around, moet je dan hetvolgende 
+laten zien in de browser:
+
+What goes around comes around.
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Strings (oplossing)</p>
+	<xmp class="prettyprint xsmall">
+<?php  
+$around = "around";
+echo 'What goes ' . $around . ' comes ' . $around . '.'; 
+?>
+	</xmp>
 </div>
 
 <div class="slide">
@@ -438,7 +562,7 @@ Met x de countdownwaarde die meegeprint wordt.
 
 <div class="slide">
     <h1>Let's Code!</h1>
-    <p>Countdown programma</p>
+    <p>Countdown programma (oplossing)</p>
 	<xmp class="prettyprint xsmall">
 <?php
 $target = mktime(0, 0, 0, 04, 02, 2014) ; // 02 april 2014 = einddatum 
@@ -532,6 +656,73 @@ $c[][][][] = "0000"; // four dimensions
 </div>
 
 <div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Arrays</p>
+	<xmp class="prettyprint xsmall">
+Maak een array van waarden die de max temperaturen van 30 dagen in een april maand voorstellen.
+Bereken vervolgens de gemiddelde max temp, de vijf warmste max temps en de vijf koudste max temps. 
+Print deze oplossing naar de browser.
+
+Gebruik bv volgende waarden: 
+18, 11, 12, 18, 16, 19, 22, 23, 25, 27, 23, 18, 13, 19, 18,
+18, 12, 13, 10, 19, 18, 12, 15, 17, 23, 28, 22, 25, 29, 23
+
+Tip: de ASCII code voor graden teken is &deg;
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Arrays (oplossing)</p>
+	<xmp class="prettyprint xxsmall">
+<?php
+//Create an array of 30 max high temperatures for an April month.
+$highTemps = array(
+	18, 11, 12, 18, 16, 19, 22, 23, 25, 27, 23, 18, 13, 19, 18,
+	18, 12, 13, 10, 19, 18, 12, 15, 17, 23, 28, 22, 25, 29, 23
+);
+//Get number of temps.
+$count = count($highTemps);
+//Get a total of all temps.
+$total = 0;
+foreach ($highTemps as $h){
+	$total += $h;
+}
+//Calculate average.
+$avg = round($total / $count);
+//Send data to the browser. &deg; is the ASCII code for the degree sign.
+echo "<p>The average high temperature for the month was $avg &deg;C.</p>\n";
+?>
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Arrays (oplossing - vervolg)</p>
+	<xmp class="prettyprint xxsmall">
+<?php
+//Sort the temps and get the top and bottom five.
+//Use rsort to produce a descending sort.
+rsort($highTemps);
+//Pull out the top 5 temps.
+$topTemps = array_slice($highTemps, 0, 5);
+echo "<p>The warmest five high temperatures were: <br />\n";
+foreach($topTemps as $t){
+	echo "$t &deg;C <br/> \n";
+}
+echo "</p>";
+//Pull out the bottom five temps.
+$lowTemps = array_slice($highTemps, -5, 5);
+echo "<p>The coolest five high temperatures were: <br/>\n";
+foreach($lowTemps as $l){
+	echo "$l &deg;C <br/> \n";
+}
+echo "</p>";
+?>
+	</xmp>
+</div>
+
+<div class="slide">
     <h1>Conditionals</h1>
 <xmp class="prettyprint small">
 If statement
@@ -621,6 +812,36 @@ $y = ($x == 1) ? 1 : 2; // $y = 2;
 $x = 1;
 ($x == 1) ? $y = 1 : $y = 2; // $y = 1;
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Conditionals</p>
+	<xmp class="prettyprint xsmall">
+Gebruik een if-then-else statement om te bepalen wat er uitgeprint wordt in de browser. 
+Schrijf een script dat de huidige maand bepaalt en afhankelijk ofdat het augustus is 
+hetvolgende wegschrijft naar de browser:
+
+It's August, so it's really hot.
+Not August, so at least not in the peak of the heat.
+
+Tip: de functie om de huidge maand te weten is 'date('F', time())'
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Conditionals (oplossing)</p>
+	<xmp class="prettyprint xsmall">
+<?php
+$currMonth=date('F', time());
+if ($currMonth == 'August'){
+	echo "<p>It's August, so it's really hot.</p>";
+} else {
+	echo "<p>Not August, so at least not in the peak of the heat.</p>";
+}  
+?>
+	</xmp>
 </div>
 
 <div class="slide">
@@ -756,6 +977,103 @@ while ($i++ < 10)
 	for (;;) { continue 2; } // start next while iteration
 }
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Loops</p>
+	<xmp class="prettyprint xsmall">
+HTML tabellen bevatten veel code die herhaald wordt. Een perfecte toepassing 
+dus om loops te gebruiken. You can do even more if you nest the for loops.
+
+In deze oefening gebruik 2 loops, waarvan 1 genest is in de eerste loop. 
+Maak devolgende vermenigvuldigingstabel:
+	</xmp>
+	<div class="paddingleftsmall">
+		<table border="1" style="width: 500px;"><tr class="fragmentsmall">
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+		<td>7</td>
+		</tr><tr class="fragmentsmall">
+		<td>2</td>
+		<td>4</td>
+		<td>6</td>
+		<td>8</td>
+		<td>10</td>
+		<td>12</td>
+		<td>14</td>
+		</tr><tr class="fragmentsmall">
+		<td>3</td>
+		<td>6</td>
+		<td>9</td>
+		<td>12</td>
+		<td>15</td>
+		<td>18</td>
+		<td>21</td>
+		</tr><tr class="fragmentsmall">
+		<td>4</td>
+		<td>8</td>
+		<td>12</td>
+		<td>16</td>
+		<td>20</td>
+		<td>24</td>
+		<td>28</td>
+		</tr><tr class="fragmentsmall">
+		<td>5</td>
+		<td>10</td>
+		<td>15</td>
+		<td>20</td>
+		<td>25</td>
+		<td>30</td>
+		<td>35</td>
+		</tr><tr class="fragmentsmall">
+		<td>6</td>
+		<td>12</td>
+		<td>18</td>
+		<td>24</td>
+		<td>30</td>
+		<td>36</td>
+		<td>42</td>
+		</tr><tr class="fragmentsmall">
+		<td>7</td>
+		<td>14</td>
+		<td>21</td>
+		<td>28</td>
+		<td>35</td>
+		<td>42</td>
+		<td>49</td>
+		</tr></table> 
+	</div>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Loops (oplossing)</p>
+	<xmp class="prettyprint xsmall">
+<?php
+//Generate an HTML table
+echo "<table border=\"1\">";
+   
+//Generate table data showing the numbers 1-7 multiplied by each other,
+//starting with the rows.
+for ($row=1; $row<=7; $row++){
+  echo "<tr>\n";
+  //Generate each entry in the row to create the columns.
+  for ($col=1; $col<=7; $col++){
+    //First, do the math.
+    $x=$col * $row;
+    //Then send the value to the table with the table data tags.  
+    echo "<td>$x</td>\n";
+  }
+  echo "</tr>";
+}
+echo "</table>";
+?>
+	</xmp>
 </div>
 
 <div class="slide">
@@ -966,6 +1284,97 @@ echo "Hello World!";
 // will NOT execute echo statement because noFileExistsHere.php gives error!
 ?>
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Functions</p>
+	<xmp class="prettyprint xsmall">
+Maak een array $months. Gebruik de maandnamen als sleutels, en het aantal dagen 
+van elke maand als waarden. Voor februari gebruik de volgende waarde: 
+"28 days, if leap year 29".
+
+Vervolgens schrijf een functie om het option element voor een form select veld 
+te creeren. De option waarde moet met hoofdletters weergegeven worden. De code 
+voor de array en de functie moeten de HTML van de pagina voorafgaan.
+
+Maak een form voor de gebruiker met als vraag "Please choose a month." Vervolgens, 
+geef een select veld met de maanden als opties dmv door de array te lopen met behulp
+van een functie die je eerder definieerde.
+
+Als de gebruiker de submit button clicked laat dan het volgende zien als resultaat:
+"The month of $month has $number days.", met $month de naam van de maand de gebruiker
+koos en $number het aantal dagen in die maand. Let op voor de maand februari.
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Functions (oplossing)</p>
+	<xmp class="prettyprint xxsmall">
+bestandsnaam: days-of-month.php
+<?php
+//Create array.
+$months=array('January'=>31,'February'=>'28 days, if leap year 29',
+'March'=>31,'April'=>30,'May'=>31,'June'=>30,'July'=>31,'August'=>31,
+'September'=>30,'October'=>31,'November'=>30,'December'=>31);
+ 
+//Define function. Use built in string function to make each option upper case.
+//Don't forget to escape the quotes in your HTML.
+function option($str){
+	echo "<option value=\"$str\">" .ucfirst($str). "</option>\n";
+}
+?>
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Functions (oplossing - vervolg)</p>
+	<xmp class="prettyprint xxsmall">
+<html>
+<head><title>Days in a Month</title></head>
+<body>
+<h2>Days in a Month</h2>
+<?php
+//If form not submitted, show form.
+if(!isset ($_POST['submit'])){
+?>
+	<form method="post" action="days-of-month.php">
+	<p>Please choose a month.</p>
+	<select name="month">
+<?php
+//Create options using the array and the function.
+	foreach ($months as $k => $v){
+		option($k);
+	}
+?>
+	</select> 
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Functions (oplossing - vervolg 2)</p>
+	<xmp class="prettyprint xxsmall">
+	<input type="submit" name="submit" value="Go" />
+	</form>
+<?php
+//If form submitted, respond to user.
+} else {
+//Retrieve user input.
+	$month = $_POST['month'];
+//Allow for February using a conditional statement. 
+	if ($month == 'February'){
+		echo "The month of February has " . $months['February'] . ".";
+	} else {
+		echo "The month of $month has $months[$month] days.";
+	}
+}
+?>
+</body>
+</html>
+	</xmp>
 </div>
 
 <div class="slide">
@@ -1211,6 +1620,58 @@ the general settings of the PHP configuration file, php.ini, along with other in
 regarding PHP.
 phpinfo(); // display PHP information
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>HTML forms</p>
+	<xmp class="prettyprint xxsmall">
+Vraag een input van de gebruiker en stuur deze input naar een ander bestand en verwerk het.
+Maak 2 aparte bestanden aan. De eerste zal een form bevatten met 1 inputveld voor de 
+favoriete stad van de gebruiker. Gebruik de post methode voor de form. Het tweede bestand bevat
+PHP code om het antwoord van de gebruiker te verwerken. In deze oefening vragen we je een simpele
+echo van de favoriete stad van de gebruiker te doen met $city. $city is de input van de form.
+
+Tip: de variabele bevat de input van de gebruiker in een array. The array variable 
+is $_POST['name'], met 'name' de naam van het inputveld. 
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>HTML forms (oplossing)</p>
+	<xmp class="prettyprint xxsmall">
+form code van bestand form.php:
+<html><head><title>Simple Form - Favorite City</title></head>
+<body>
+<h2>Favorite City</h2>
+<form method="post" action="response.php">
+Please enter your favorite city:  <br />
+<input type="text" name="city" />
+<p />
+<input type="submit" name="submit" value="Go" />
+</form>
+</body>
+</html>
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>HTML forms (oplossing vervolg)</p>
+	<xmp class="prettyprint xxsmall">
+bestand response.php:
+<html><head><title>Simple Response - Favorite City</title></head>
+<body>
+<h2>Favorite City</h2>
+<?php
+//Retrieve string from post submission
+$city = $_POST['city'];
+echo "Your favorite city is $city.";
+?>
+</body>
+</html>
+	</xmp>
 </div>
 
 <div class="slide">
@@ -1595,6 +2056,38 @@ second argument. The specified folder must already exist and if the function
 succeeds in moving the file it returns true. The other new function is basename. 
 It returns the filename component of a path, including the file extension.
 </xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Files</p>
+	<xmp class="prettyprint xxsmall">
+Schrijf een teller voor het aantal keren dat gebruikers je pagina hebben bekeken.
+Doe dit met behulp van een bestand waar je de tellerwaarde bijhoud.
+Schrijf bij elk bezoek van de pagina een boodschap met:
+24 hits to this page.
+24 is de teller die uiteraard dynamisch vermeerderd en begint bij 1.
+	</xmp>
+</div>
+
+<div class="slide">
+    <h1>Let's Code!</h1>
+    <p>Files (oplossing)</p>
+	<xmp class="prettyprint xxsmall">
+<?php
+$filename = '/path/to/counter.txt'; // our counter file
+$fp = fopen( $filename,"r"); // open it for READING ("r")
+$counter = fread($fp, filesize($filename) ); // read in value
+fclose($fp); // close it whilst we work
+
+++$counter; // increase the counter by one
+print "$counter hits to this page"; // print out the new value
+
+$fp = fopen( $filename,"w"); // open it for WRITING ("w")
+fwrite( $fp, $counter); // write in the new value
+fclose( $fp ); // close it
+?> 
+	</xmp>
 </div>
 
 <div class="slide">
